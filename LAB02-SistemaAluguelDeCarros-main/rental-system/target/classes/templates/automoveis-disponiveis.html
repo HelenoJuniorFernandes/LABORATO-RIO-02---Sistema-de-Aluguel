@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>Automóveis Disponíveis - Sistema de Aluguel de Carros</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Menu Lateral -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>Sistema de Aluguel</h2>
+          <p>Bem-vindo, <span sec:authentication="name"></span></p>
+        </div>
+        
+        <ul class="sidebar-menu">
+          <li class="menu-item">
+            <a th:href="@{/cliente/dashboard}" class="menu-link">
+              <span class="menu-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/cliente/dados}" class="menu-link">
+              <span class="menu-icon">👤</span>
+              Meus Dados
+            </a>
+          </li>
+          <li class="menu-item active">
+            <a href="#" class="menu-link">
+              <span class="menu-icon">🚗</span>
+              Automóveis Disponíveis
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/mine}" class="menu-link">
+              <span class="menu-icon">📋</span>
+              Meus Pedidos
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/new}" class="menu-link">
+              <span class="menu-icon">➕</span>
+              Criar Pedido de Aluguel
+            </a>
+          </li>
+          <li class="menu-item logout">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+              <button type="submit" class="menu-link logout-btn">
+                <span class="menu-icon">🚪</span>
+                Sair
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Automóveis Disponíveis</h1>
+          <p>Veja todos os veículos disponíveis para aluguel</p>
+        </div>
+
+        <div class="vehicles-section">
+          <div class="section-header">
+            <h2>Frota de Veículos</h2>
+            <div class="vehicle-count">
+              <span th:text="${automoveis.size()}">0</span> veículos disponíveis
+            </div>
+          </div>
+
+          <div th:if="${automoveis.empty}" class="empty-state">
+            <div class="empty-icon">🚗</div>
+            <h3>Nenhum veículo disponível</h3>
+            <p>No momento não há veículos cadastrados no sistema.</p>
+          </div>
+
+          <div th:unless="${automoveis.empty}" class="vehicles-grid">
+            <div th:each="automovel : ${automoveis}" class="vehicle-card">
+              <div class="vehicle-image">
+                <div class="vehicle-placeholder">
+                  <span class="vehicle-icon">🚗</span>
+                </div>
+              </div>
+              
+              <div class="vehicle-info">
+                <h3 th:text="${automovel.marca} + ' ' + ${automovel.modelo}">Marca Modelo</h3>
+                <div class="vehicle-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Placa:</span>
+                    <span class="detail-value" th:text="${automovel.placa}">ABC-1234</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Ano:</span>
+                    <span class="detail-value" th:text="${automovel.ano}">2023</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Cor:</span>
+                    <span class="detail-value" th:text="${automovel.cor}">Branco</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="vehicle-actions">
+                <a th:href="@{/pedidos/new}" class="btn btn-primary">
+                  <span class="btn-icon">➕</span>
+                  Solicitar Aluguel
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <div class="section-header">
+            <h2>Ações Rápidas</h2>
+          </div>
+          
+          <div class="action-buttons">
+            <a th:href="@{/pedidos/new}" class="btn btn-primary">
+              <span class="btn-icon">➕</span>
+              Fazer Novo Pedido
+            </a>
+            <a th:href="@{/pedidos/mine}" class="btn btn-secondary">
+              <span class="btn-icon">📋</span>
+              Ver Meus Pedidos
+            </a>
+            <a th:href="@{/cliente/dashboard}" class="btn btn-secondary">
+              <span class="btn-icon">📊</span>
+              Voltar ao Dashboard
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

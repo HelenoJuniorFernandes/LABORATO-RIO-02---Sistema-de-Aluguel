@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>Dashboard Agente - Sistema de Aluguel de Carros</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Menu Lateral -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>Sistema de Aluguel</h2>
+          <p>Agente: <span sec:authentication="name"></span></p>
+        </div>
+        
+        <ul class="sidebar-menu">
+          <li class="menu-item active">
+            <a href="#" class="menu-link">
+              <span class="menu-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/dados}" class="menu-link">
+              <span class="menu-icon">👤</span>
+              Meus Dados
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/pending}" class="menu-link">
+              <span class="menu-icon">⏳</span>
+              Pedidos Pendentes de Avaliação
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/todos-pedidos}" class="menu-link">
+              <span class="menu-icon">📋</span>
+              Todos os Pedidos
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/automoveis}" class="menu-link">
+              <span class="menu-icon">🚗</span>
+              Automóveis Cadastrados
+            </a>
+          </li>
+          <li class="menu-item logout">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+              <button type="submit" class="menu-link logout-btn">
+                <span class="menu-icon">🚪</span>
+                Sair
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Dashboard do Agente</h1>
+          <p>Visão geral dos pedidos de aluguel para análise</p>
+        </div>
+
+        <!-- Cards de Resumo -->
+        <div class="dashboard-cards">
+          <div class="summary-card">
+            <div class="card-icon pending">
+              <span>⏳</span>
+            </div>
+            <div class="card-content">
+              <h3 th:text="${pedidosPendentes}">0</h3>
+              <p>Pedidos em Análise</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon active">
+              <span>✅</span>
+            </div>
+            <div class="card-content">
+              <h3 th:text="${pedidosAprovados}">0</h3>
+              <p>Pedidos Aprovados</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon cancelled">
+              <span>❌</span>
+            </div>
+            <div class="card-content">
+              <h3 th:text="${pedidosRejeitados}">0</h3>
+              <p>Pedidos Rejeitados</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon total">
+              <span>📊</span>
+            </div>
+            <div class="card-content">
+              <h3 th:text="${totalPedidos}">0</h3>
+              <p>Total de Pedidos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela de Pedidos Recentes -->
+        <div class="recent-orders">
+          <div class="section-header">
+            <h2>Pedidos Recentes</h2>
+            <a th:href="@{/agente/todos-pedidos}" class="btn btn-outline">Ver Todos</a>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cliente</th>
+                  <th>Carro</th>
+                  <th>Data</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="pedido : ${pedidosRecentes}">
+                  <td th:text="${pedido.id}"></td>
+                  <td th:text="${pedido.cliente.nome}"></td>
+                  <td th:text="${pedido.automovel.marca} + ' ' + ${pedido.automovel.modelo}"></td>
+                  <td th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy')}"></td>
+                  <td>
+                    <span 
+                      th:class="'status-badge status-' + ${pedido.status.name().toLowerCase()}"
+                      th:text="${pedido.status.name()}"
+                    ></span>
+                  </td>
+                </tr>
+                <tr th:if="${pedidosRecentes.empty}">
+                  <td colspan="5" class="text-center">Nenhum pedido encontrado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Ações Rápidas -->
+        <div class="quick-actions">
+          <div class="section-header">
+            <h2>Ações Rápidas</h2>
+          </div>
+          
+          <div class="action-buttons">
+            <a th:href="@{/pedidos/pending}" class="btn btn-primary">
+              <span class="btn-icon">⏳</span>
+              Avaliar Pedidos Pendentes
+            </a>
+            <a th:href="@{/agente/todos-pedidos}" class="btn btn-secondary">
+              <span class="btn-icon">📋</span>
+              Ver Todos os Pedidos
+            </a>
+            <a th:href="@{/agente/automoveis}" class="btn btn-secondary">
+              <span class="btn-icon">🚗</span>
+              Ver Automóveis
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
