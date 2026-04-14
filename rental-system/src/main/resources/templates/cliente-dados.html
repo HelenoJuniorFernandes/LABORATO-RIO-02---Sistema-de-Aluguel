@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>Meus Dados - Sistema de Aluguel de Carros</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Menu Lateral -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>Sistema de Aluguel</h2>
+          <p>Bem-vindo, <span sec:authentication="name"></span></p>
+        </div>
+        
+        <ul class="sidebar-menu">
+          <li class="menu-item">
+            <a th:href="@{/cliente/dashboard}" class="menu-link">
+              <span class="menu-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="menu-item active">
+            <a href="#" class="menu-link">
+              <span class="menu-icon">👤</span>
+              Meus Dados
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/cliente/automoveis}" class="menu-link">
+              <span class="menu-icon">🚗</span>
+              Automóveis Disponíveis
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/mine}" class="menu-link">
+              <span class="menu-icon">📋</span>
+              Meus Pedidos
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/new}" class="menu-link">
+              <span class="menu-icon">➕</span>
+              Criar Pedido de Aluguel
+            </a>
+          </li>
+          <li class="menu-item logout">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+              <button type="submit" class="menu-link logout-btn">
+                <span class="menu-icon">🚪</span>
+                Sair
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Meus Dados</h1>
+          <p>Visualize e gerencie suas informações pessoais</p>
+        </div>
+
+        <div class="card">
+          <div class="profile-section">
+            <div class="profile-header">
+              <div class="profile-avatar">
+                <span class="avatar-icon">👤</span>
+              </div>
+              <div class="profile-info">
+                <h2 th:text="${cliente.nome}">Nome do Cliente</h2>
+                <p th:text="${cliente.email}">email@exemplo.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h3>Informações Pessoais</h3>
+            <div class="data-grid">
+              <div class="data-item">
+                <label>Nome Completo</label>
+                <div class="data-value" th:text="${cliente.nome}">Nome do Cliente</div>
+              </div>
+              <div class="data-item">
+                <label>Email</label>
+                <div class="data-value" th:text="${cliente.email}">email@exemplo.com</div>
+              </div>
+              <div class="data-item">
+                <label>ID do Cliente</label>
+                <div class="data-value" th:text="${cliente.id}">123</div>
+              </div>
+              <div class="data-item">
+                <label>Tipo de Usuário</label>
+                <div class="data-value">Cliente</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-section">
+            <h3>Estatísticas da Conta</h3>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number" th:text="${totalPedidos}">0</div>
+                <div class="stat-label">Total de Pedidos</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" th:text="${pedidosAprovados}">0</div>
+                <div class="stat-label">Pedidos Aprovados</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" th:text="${pedidosPendentes}">0</div>
+                <div class="stat-label">Pedidos Pendentes</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions-section">
+            <h3>Ações</h3>
+            <div class="action-buttons">
+              <button class="btn btn-primary" disabled>
+                <span class="btn-icon">✏️</span>
+                Editar Dados (Em breve)
+              </button>
+              <button class="btn btn-secondary" disabled>
+                <span class="btn-icon">🔒</span>
+                Alterar Senha (Em breve)
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
