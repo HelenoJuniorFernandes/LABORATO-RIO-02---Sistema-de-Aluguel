@@ -4,7 +4,7 @@
   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
   <head>
-    <title>Automóveis Cadastrados - VeloRent</title>
+    <title>Automóveis Cadastrados - Sistema de Aluguel de Carros</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -14,7 +14,7 @@
       <!-- Menu Lateral -->
       <nav class="sidebar">
         <div class="sidebar-header">
-          <h2>VeloRent</h2>
+          <h2>Sistema de Aluguel</h2>
           <p>Agente: <span sec:authentication="name"></span></p>
         </div>
         
@@ -93,7 +93,13 @@
           <div th:unless="${automoveis.empty}" class="vehicles-grid">
             <div th:each="automovel : ${automoveis}" class="vehicle-card">
               <div class="vehicle-image">
-                <div class="vehicle-placeholder">
+                <img
+                  th:if="${automovel.imagemUrl != null and !#strings.isEmpty(automovel.imagemUrl)}"
+                  th:src="${automovel.imagemUrl}"
+                  th:alt="'Foto do veículo ' + ${automovel.marca} + ' ' + ${automovel.modelo}"
+                  loading="lazy"
+                />
+                <div class="vehicle-placeholder" th:unless="${automovel.imagemUrl != null and !#strings.isEmpty(automovel.imagemUrl)}">
                   <span class="vehicle-icon">🚗</span>
                 </div>
               </div>

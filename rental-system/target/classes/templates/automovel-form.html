@@ -4,7 +4,7 @@
   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
   <head>
-    <title>Cadastrar Veículo - VeloRents</title>
+    <title>Cadastrar Veículo - Sistema de Aluguel de Carros</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -14,7 +14,7 @@
       <!-- Menu Lateral -->
       <nav class="sidebar">
         <div class="sidebar-header">
-          <h2>VeloRentl</h2>
+          <h2>Sistema de Aluguel</h2>
           <p>Agente: <span sec:authentication="name"></span></p>
         </div>
 
@@ -180,6 +180,19 @@
                   min="0"
                   step="0.01"
                   required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="imagemUrl">Foto do veículo (URL ou caminho local)</label>
+                <input
+                  type="text"
+                  id="imagemUrl"
+                  th:field="*{imagemUrl}"
+                  class="form-control"
+                  placeholder="Ex: /img/cars/meu-carro.jpg"
                 />
               </div>
             </div>

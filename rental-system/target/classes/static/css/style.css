@@ -1004,3 +1004,404 @@ a:hover {
         flex-direction: column;
     }
 }
+
+/* ===== Tema 2 (alto contraste) ===== */
+:root {
+    --bg-main: #111827;
+    --bg-panel: #1f2937;
+    --bg-panel-soft: #374151;
+    --text-main: #f9fafb;
+    --text-muted: #d1d5db;
+    --accent: #f97316;
+    --accent-strong: #ea580c;
+}
+
+body {
+    font-family: "Bahnschrift", "Trebuchet MS", "Segoe UI", sans-serif;
+    background: linear-gradient(150deg, #0f172a 0%, #1e293b 60%, #111827 100%);
+    color: var(--text-main);
+}
+
+.header,
+.card,
+.vehicles-section,
+.quick-actions,
+.recent-orders,
+.summary-card {
+    background: var(--bg-panel);
+    border: 1px solid #4b5563;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.header h1,
+.content-header h1,
+.sidebar-header h2 {
+    font-family: "Arial Black", "Impact", "Bahnschrift", sans-serif;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+}
+
+.header p,
+.content-header p,
+.detail-label,
+.card-content p,
+.text-center,
+.sidebar-header p {
+    color: var(--text-muted);
+}
+
+.form-control {
+    background: #111827;
+    border: 1px solid #6b7280;
+    color: #f9fafb;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+}
+
+.btn,
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(249, 115, 22, 0.35);
+}
+
+.btn:hover,
+.btn-primary:hover {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+}
+
+.sidebar {
+    background: linear-gradient(180deg, #030712 0%, #111827 100%);
+    border-right: 1px solid #4b5563;
+}
+
+.menu-link {
+    color: #f3f4f6;
+}
+
+.menu-link:hover {
+    background: #374151;
+    color: #ffffff;
+}
+
+.menu-item.active .menu-link {
+    background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+    border-right: 3px solid #fdba74;
+}
+
+.vehicle-image {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+}
+
+thead {
+    background: #111827;
+}
+
+thead th,
+tbody td {
+    color: #f3f4f6;
+}
+
+tbody tr:hover {
+    background: #374151;
+}
+
+/* Correcoes de contraste e refinamento visual */
+.main-content {
+    background: rgba(15, 23, 42, 0.92);
+    color: #f9fafb;
+}
+
+.content-header h1,
+.content-header p {
+    color: #f9fafb;
+}
+
+.section-header h2,
+.card-content h3,
+.detail-value,
+.vehicle-info h3,
+.data-value,
+.stat-number {
+    color: #f9fafb;
+}
+
+.card-content p,
+.detail-label,
+.data-item label,
+.stat-label {
+    color: #e5e7eb;
+}
+
+.table-container table {
+    background: #111827;
+}
+
+tbody tr {
+    border-bottom: 1px solid #4b5563;
+}
+
+.summary-card {
+    border: 1px solid #475569;
+}
+
+.btn-secondary {
+    background: #334155;
+    color: #f8fafc;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.btn-outline {
+    border-color: #f97316;
+    color: #f97316;
+}
+
+.btn-outline:hover {
+    background: #f97316;
+    color: #ffffff;
+}
+
+.login-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.login-logo {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.35);
+}
+
+/* Fix final da sidebar (evita conflito de tema) */
+.sidebar {
+    background: linear-gradient(180deg, #020617 0%, #0f172a 100%) !important;
+    border-right: 1px solid #334155 !important;
+}
+
+.sidebar-header {
+    background: linear-gradient(180deg, #0f172a 0%, #111827 100%) !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+.sidebar-header h2,
+.sidebar-header p,
+.sidebar-header span {
+    color: #f8fafc !important;
+}
+
+.sidebar-menu {
+    background: transparent !important;
+}
+
+.menu-item {
+    border-bottom: 1px solid #334155 !important;
+}
+
+.menu-link,
+.logout-btn {
+    color: #f8fafc !important;
+    background: transparent !important;
+}
+
+.menu-link:hover,
+.logout-btn:hover {
+    background: #1e293b !important;
+    color: #ffffff !important;
+}
+
+.menu-item.active .menu-link {
+    background: linear-gradient(90deg, #f97316 0%, #ea580c 100%) !important;
+    color: #ffffff !important;
+    border-right: 3px solid #fdba74 !important;
+}
+
+/* Ajuste global final para todas as telas */
+:root {
+    --vr-bg: #0f172a;
+    --vr-bg-soft: #1e293b;
+    --vr-bg-card: #111827;
+    --vr-border: #334155;
+    --vr-text: #f8fafc;
+    --vr-text-soft: #cbd5e1;
+    --vr-accent: #f97316;
+    --vr-accent-2: #ea580c;
+}
+
+body,
+.dashboard-container,
+.main-content {
+    background: linear-gradient(145deg, #0b1220 0%, #0f172a 60%, #111827 100%) !important;
+    color: var(--vr-text) !important;
+}
+
+.header,
+.card,
+.summary-card,
+.recent-orders,
+.quick-actions,
+.vehicles-section,
+.profile-header,
+.data-item,
+.stat-item {
+    background: var(--vr-bg-card) !important;
+    border: 1px solid var(--vr-border) !important;
+    color: var(--vr-text) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28) !important;
+}
+
+.content-header h1,
+.header h1,
+.profile-info h2,
+.section-header h2,
+.data-section h3,
+.stats-section h3,
+.actions-section h3,
+.vehicle-info h3,
+.card-content h3,
+.data-value,
+.detail-value,
+.stat-number,
+.empty-state h3 {
+    color: var(--vr-text) !important;
+}
+
+.content-header p,
+.header p,
+.profile-info p,
+.card-content p,
+.detail-label,
+.data-item label,
+.stat-label,
+.text-center,
+.empty-state p {
+    color: var(--vr-text-soft) !important;
+}
+
+.form-control {
+    background: var(--vr-bg-soft) !important;
+    border: 1px solid #475569 !important;
+    color: var(--vr-text) !important;
+}
+
+.form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+.form-control:focus {
+    border-color: var(--vr-accent) !important;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.22) !important;
+}
+
+.btn,
+.btn-primary,
+.btn-success {
+    background: linear-gradient(135deg, var(--vr-accent) 0%, var(--vr-accent-2) 100%) !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+.btn-outline {
+    background: transparent !important;
+    color: var(--vr-accent) !important;
+    border: 1px solid var(--vr-accent) !important;
+}
+
+.btn-outline:hover {
+    background: var(--vr-accent) !important;
+    color: #fff !important;
+}
+
+table {
+    background: #0f172a !important;
+}
+
+thead {
+    background: #1e293b !important;
+}
+
+thead th,
+tbody td {
+    color: var(--vr-text) !important;
+    border-color: var(--vr-border) !important;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--vr-border) !important;
+}
+
+tbody tr:hover {
+    background: #1e293b !important;
+}
+
+.vehicle-count {
+    background: rgba(249, 115, 22, 0.15) !important;
+    color: #fed7aa !important;
+    border: 1px solid rgba(249, 115, 22, 0.45) !important;
+}
+
+.card-icon.total,
+.card-icon.active,
+.card-icon.cancelled,
+.card-icon.pending,
+.profile-avatar {
+    background: #e2e8f0 !important;
+}
+
+.main-content .alert-success {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #d1fae5 !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+.main-content .alert-error {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #fee2e2 !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Garantia final de contraste para cards de veiculos */
+.vehicle-card {
+    background: #111827 !important;
+    border: 1px solid #334155 !important;
+}
+
+.vehicle-card .vehicle-info,
+.vehicle-card .vehicle-details,
+.vehicle-card .vehicle-actions {
+    background: #111827 !important;
+}
+
+.vehicle-card .vehicle-info h3,
+.vehicle-card .detail-label,
+.vehicle-card .detail-value {
+    color: #f8fafc !important;
+}
+
+.vehicle-card .detail-item {
+    border-bottom: 1px solid #334155 !important;
+}
+
+.vehicle-image {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
