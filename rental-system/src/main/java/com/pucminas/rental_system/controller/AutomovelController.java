@@ -62,7 +62,6 @@ public class AutomovelController {
             automovel.setPlaca(automovelAtualizado.getPlaca());
             automovel.setCor(automovelAtualizado.getCor());
             automovel.setValorAluguelDiario(automovelAtualizado.getValorAluguelDiario());
-            automovel.setImagemUrl(automovelAtualizado.getImagemUrl());
             
             automovelRepository.save(automovel);
             redirectAttributes.addFlashAttribute("successMessage", "Veículo atualizado com sucesso!");
