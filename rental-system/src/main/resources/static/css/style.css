@@ -879,11 +879,19 @@ a:hover {
 }
 
 .vehicle-image {
-    height: 150px;
-    background: #f8f9fa;
+    height: 180px;
+    background: #0a192f;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .vehicle-placeholder {
@@ -892,7 +900,7 @@ a:hover {
 
 .vehicle-icon {
     font-size: 3rem;
-    color: #6c757d;
+    color: #a8b2d1;
 }
 
 .vehicle-info {
@@ -900,7 +908,7 @@ a:hover {
 }
 
 .vehicle-info h3 {
-    color: #0A2463;
+    color: #ffffff;
     font-size: 1.3rem;
     font-weight: 600;
     margin: 0 0 15px 0;
@@ -915,7 +923,7 @@ a:hover {
     justify-content: space-between;
     margin-bottom: 8px;
     padding: 5px 0;
-    border-bottom: 1px solid #f1f3f4;
+    border-bottom: 1px solid #1a2d4d;
 }
 
 .detail-item:last-child {
@@ -924,13 +932,13 @@ a:hover {
 }
 
 .detail-label {
-    color: #6c757d;
+    color: #a8b2d1;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 .detail-value {
-    color: #0A2463;
+    color: #FF6B35;
     font-size: 0.9rem;
     font-weight: 600;
 }

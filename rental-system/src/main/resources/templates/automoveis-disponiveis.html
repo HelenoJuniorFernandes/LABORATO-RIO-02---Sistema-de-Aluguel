@@ -84,7 +84,8 @@
           <div th:unless="${automoveis.empty}" class="vehicles-grid">
             <div th:each="automovel : ${automoveis}" class="vehicle-card">
               <div class="vehicle-image">
-                <div class="vehicle-placeholder">
+                <img th:if="${automovel.imagemUrl != null}" th:src="@{${automovel.imagemUrl}}" th:alt="${automovel.marca} + ' ' + ${automovel.modelo}" />
+                <div th:unless="${automovel.imagemUrl != null}" class="vehicle-placeholder">
                   <span class="vehicle-icon">🚗</span>
                 </div>
               </div>

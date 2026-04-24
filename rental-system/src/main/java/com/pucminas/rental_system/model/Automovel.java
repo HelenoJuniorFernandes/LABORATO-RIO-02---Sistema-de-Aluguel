@@ -14,6 +14,7 @@ public class Automovel {
     private String placa;
     private String cor;
     private double valorAluguelDiario;
+    private String imagemUrl;
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -32,4 +33,6 @@ public class Automovel {
     public void setCor(String cor) { this.cor = cor; }
     public double getValorAluguelDiario() { return valorAluguelDiario; }
     public void setValorAluguelDiario(double valorAluguelDiario) { this.valorAluguelDiario = valorAluguelDiario; }
+    public String getImagemUrl() { return imagemUrl; }
+    public void setImagemUrl(String imagemUrl) { this.imagemUrl = imagemUrl; }
 }
