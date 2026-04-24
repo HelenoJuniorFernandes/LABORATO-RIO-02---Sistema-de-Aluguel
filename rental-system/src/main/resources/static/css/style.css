@@ -1,3 +1,6 @@
+/* Importar fonte automotiva */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
 /* Reset e configurações globais */
 * {
     margin: 0;
@@ -6,9 +9,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fa;
-    color: #2c3e50;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+    color: #e0e7ff;
     min-height: 100vh;
     line-height: 1.6;
 }
@@ -22,26 +25,30 @@ body {
 
 /* Header */
 .header {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #0A2463 0%, #1E40AF 100%);
+    border: none;
+    border-radius: 12px;
     padding: 30px;
     margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(10, 36, 99, 0.25);
 }
 
 .header h1 {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    font-weight: 600;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 800;
     text-align: center;
     margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .header p {
     text-align: center;
-    color: #6c757d;
-    font-size: 1rem;
+    color: #e0e7ff;
+    font-size: 1.05rem;
+    font-weight: 500;
 }
 
 /* Cards */
@@ -85,9 +92,9 @@ body {
 
 .form-control:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #FF6B35;
     background: #ffffff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.25);
 }
 
 .form-control::placeholder {
@@ -98,23 +105,24 @@ body {
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    background: #007bff;
+    background: linear-gradient(135deg, #0A2463 0%, #1E40AF 100%);
     color: white;
     text-decoration: none;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(10, 36, 99, 0.25);
 }
 
 .btn:hover {
-    background: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    background: linear-gradient(135deg, #FF6B35 0%, #F97316 100%);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
     text-decoration: none;
     color: white;
+    transform: translateY(-2px);
 }
 
 .btn:active {
@@ -241,13 +249,13 @@ tbody td {
 
 /* Links */
 a {
-    color: #007bff;
+    color: #0A2463;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3;
+    color: #FF6B35;
     text-decoration: underline;
 }
 
@@ -356,27 +364,27 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
+    background: #FF6B35;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+    background: #F97316;
 }
 
 /* Dashboard Styles */
 .dashboard-container {
     display: flex;
     min-height: 100vh;
-    background: #f8f9fa;
+    background: #0a192f;
 }
 
 /* Sidebar */
 .sidebar {
     width: 280px;
-    background: #ffffff;
-    border-right: 1px solid #e9ecef;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    background: #0A2463;
+    border-right: 1px solid #0A2463;
+    box-shadow: 2px 0 10px rgba(10, 36, 99, 0.3);
     position: fixed;
     height: 100vh;
     overflow-y: auto;
@@ -385,19 +393,21 @@ a:hover {
 
 .sidebar-header {
     padding: 30px 20px;
-    border-bottom: 1px solid #e9ecef;
-    background: #f8f9fa;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #0A2463 0%, #1E40AF 100%);
 }
 
 .sidebar-header h2 {
-    color: #2c3e50;
+    color: #ffffff;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 .sidebar-header p {
-    color: #6c757d;
+    color: #e0e7ff;
     font-size: 0.9rem;
     margin: 0;
 }
@@ -409,7 +419,7 @@ a:hover {
 }
 
 .menu-item {
-    border-bottom: 1px solid #f1f3f4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .menu-item:last-child {
@@ -420,7 +430,7 @@ a:hover {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    color: #495057;
+    color: #e0e7ff;
     text-decoration: none;
     transition: all 0.3s ease;
     border: none;
@@ -431,15 +441,15 @@ a:hover {
 }
 
 .menu-link:hover {
-    background: #f8f9fa;
-    color: #007bff;
+    background: rgba(255, 107, 53, 0.15);
+    color: #FF6B35;
     text-decoration: none;
 }
 
 .menu-item.active .menu-link {
-    background: #e3f2fd;
-    color: #007bff;
-    border-right: 3px solid #007bff;
+    background: rgba(255, 107, 53, 0.2);
+    color: #FF6B35;
+    border-right: 3px solid #FF6B35;
 }
 
 .menu-icon {
@@ -463,7 +473,7 @@ a:hover {
     flex: 1;
     margin-left: 280px;
     padding: 30px;
-    background: #f8f9fa;
+    background: #0a192f;
     min-height: 100vh;
 }
 
@@ -472,14 +482,16 @@ a:hover {
 }
 
 .content-header h1 {
-    color: #2c3e50;
+    color: #ffffff;
     font-size: 2.2rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 .content-header p {
-    color: #6c757d;
+    color: #a8b2d1;
     font-size: 1.1rem;
     margin: 0;
 }
@@ -519,8 +531,8 @@ a:hover {
 }
 
 .card-icon.total {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: #e0e7ff;
+    color: #0A2463;
 }
 
 .card-icon.active {
@@ -535,14 +547,20 @@ a:hover {
 
 .card-icon.pending {
     background: #fff3e0;
-    color: #f57c00;
+    color: #FF6B35;
+}
+
+.card-icon.total-spent {
+    background: #fff3e0;
+    color: #FF6B35;
 }
 
 .card-content h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: #0A2463;
     margin: 0 0 5px 0;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .card-content p {
@@ -560,7 +578,7 @@ a:hover {
 }
 
 .section-header h2 {
-    color: #2c3e50;
+    color: #e0e7ff;
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
@@ -590,7 +608,7 @@ a:hover {
 }
 
 .btn-primary {
-    background: #007bff;
+    background: #0A2463;
     color: white;
     padding: 12px 24px;
     border-radius: 6px;
@@ -599,14 +617,14 @@ a:hover {
     align-items: center;
     font-weight: 500;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(10, 36, 99, 0.2);
 }
 
 .btn-primary:hover {
-    background: #0056b3;
+    background: #FF6B35;
     color: white;
     text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
 }
 
 .btn-secondary {
@@ -631,8 +649,8 @@ a:hover {
 
 .btn-outline {
     background: transparent;
-    color: #007bff;
-    border: 1px solid #007bff;
+    color: #0A2463;
+    border: 1px solid #0A2463;
     padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
@@ -642,7 +660,7 @@ a:hover {
 }
 
 .btn-outline:hover {
-    background: #007bff;
+    background: #0A2463;
     color: white;
     text-decoration: none;
 }
@@ -709,7 +727,7 @@ a:hover {
 .profile-avatar {
     width: 80px;
     height: 80px;
-    background: #e3f2fd;
+    background: #e0e7ff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -719,11 +737,11 @@ a:hover {
 
 .avatar-icon {
     font-size: 2rem;
-    color: #1976d2;
+    color: #0A2463;
 }
 
 .profile-info h2 {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 1.8rem;
     font-weight: 600;
     margin: 0 0 5px 0;
@@ -740,7 +758,7 @@ a:hover {
 }
 
 .data-section h3, .stats-section h3, .actions-section h3 {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -758,7 +776,7 @@ a:hover {
     background: #f8f9fa;
     padding: 15px;
     border-radius: 6px;
-    border-left: 4px solid #007bff;
+    border-left: 4px solid #FF6B35;
 }
 
 .data-item label {
@@ -770,7 +788,7 @@ a:hover {
 }
 
 .data-value {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -793,8 +811,9 @@ a:hover {
 .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #007bff;
+    color: #FF6B35;
     margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .stat-label {
@@ -813,8 +832,8 @@ a:hover {
 }
 
 .vehicle-count {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: #e0e7ff;
+    color: #0A2463;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -833,7 +852,7 @@ a:hover {
 }
 
 .empty-state h3 {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
@@ -881,7 +900,7 @@ a:hover {
 }
 
 .vehicle-info h3 {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 1.3rem;
     font-weight: 600;
     margin: 0 0 15px 0;
@@ -911,7 +930,7 @@ a:hover {
 }
 
 .detail-value {
-    color: #2c3e50;
+    color: #0A2463;
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -1004,3 +1023,4 @@ a:hover {
         flex-direction: column;
     }
 }
+
