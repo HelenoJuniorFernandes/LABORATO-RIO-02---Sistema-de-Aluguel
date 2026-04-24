@@ -53,12 +53,12 @@ body {
 
 /* Cards */
 .card {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
+    background: #162447;
+    border: 1px solid #1a2d4d;
     border-radius: 8px;
     padding: 30px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease;
 }
 
@@ -153,39 +153,39 @@ body {
 .table-container {
     overflow-x: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #ffffff;
+    background: #162447;
     border-radius: 8px;
     overflow: hidden;
 }
 
 thead {
-    background: #f8f9fa;
+    background: #1a2d4d;
 }
 
 thead th {
     padding: 16px;
     text-align: left;
-    color: #495057;
+    color: #e0e7ff;
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid #1a2d4d;
 }
 
 tbody tr {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #1a2d4d;
     transition: background-color 0.3s ease;
 }
 
 tbody tr:hover {
-    background: #f8f9fa;
+    background: #1a2d4d;
 }
 
 tbody tr:last-child {
@@ -194,7 +194,7 @@ tbody tr:last-child {
 
 tbody td {
     padding: 16px;
-    color: #495057;
+    color: #e0e7ff;
     font-size: 0.9rem;
 }
 
@@ -505,10 +505,10 @@ a:hover {
 }
 
 .summary-card {
-    background: #ffffff;
+    background: #162447;
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -516,7 +516,7 @@ a:hover {
 
 .summary-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .card-icon {
@@ -558,13 +558,13 @@ a:hover {
 .card-content h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: #0A2463;
+    color: #FF6B35;
     margin: 0 0 5px 0;
     font-family: 'Orbitron', sans-serif;
 }
 
 .card-content p {
-    color: #6c757d;
+    color: #a8b2d1;
     font-size: 0.9rem;
     margin: 0;
 }
@@ -586,19 +586,19 @@ a:hover {
 
 /* Recent Orders */
 .recent-orders {
-    background: #ffffff;
+    background: #162447;
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
 }
 
 /* Quick Actions */
 .quick-actions {
-    background: #ffffff;
+    background: #162447;
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .action-buttons {
@@ -800,12 +800,12 @@ a:hover {
 }
 
 .stat-item {
-    background: #ffffff;
+    background: #162447;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #1a2d4d;
 }
 
 .stat-number {
@@ -817,17 +817,17 @@ a:hover {
 }
 
 .stat-label {
-    color: #6c757d;
+    color: #a8b2d1;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 /* Vehicles Page Styles */
 .vehicles-section {
-    background: #ffffff;
+    background: #162447;
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
 }
 
@@ -865,17 +865,17 @@ a:hover {
 }
 
 .vehicle-card {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
+    background: #162447;
+    border: 1px solid #1a2d4d;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .vehicle-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .vehicle-image {
