@@ -10,6 +10,7 @@ import io.micronaut.core.annotation.Nullable;
 
 import java.net.URI;
 import java.security.Principal;
+import java.util.Map;
 
 @Secured(SecurityRule.IS_ANONYMOUS)
 @Controller
@@ -21,7 +22,7 @@ public class AuthController {
         if (principal != null) {
             return HttpResponse.redirect(URI.create("/pedidos"));
         }
-        return HttpResponse.ok();
+        return HttpResponse.ok(Map.of());
     }
 
     @Get("/")

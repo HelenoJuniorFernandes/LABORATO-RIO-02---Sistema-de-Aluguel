@@ -4,9 +4,6 @@ micronaut:
   server:
     port: ${PORT:8080}
     
-  views:
-    folder: templates
-
   # Configurações do Micronaut Security
   security:
     authentication: session
