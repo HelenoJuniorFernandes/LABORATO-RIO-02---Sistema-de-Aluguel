@@ -3,25 +3,25 @@ package com.pucminas.rental_system.service;
 import com.pucminas.rental_system.model.User;
 import com.pucminas.rental_system.repository.UserRepository;
 import io.micronaut.http.HttpRequest;
-import io.micronaut.security.authentication.AuthenticationProvider;
 import io.micronaut.security.authentication.AuthenticationRequest;
 import io.micronaut.security.authentication.AuthenticationResponse;
+import io.micronaut.security.authentication.provider.HttpRequestAuthenticationProvider;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 import java.util.Collections;
 
 @Singleton
-public class UserDetailsServiceImpl implements AuthenticationProvider<HttpRequest<?>> {
+public class UserDetailsServiceImpl<B> implements HttpRequestAuthenticationProvider<B> {
 
     @Inject
     private UserRepository userRepository;
 
     @Override
-    public AuthenticationResponse authenticate(HttpRequest<?> httpRequest,
-                                               AuthenticationRequest<?, ?> authenticationRequest) {
-        String email = authenticationRequest.getIdentity().toString();
-        String password = authenticationRequest.getSecret().toString();
+    public AuthenticationResponse authenticate(HttpRequest<B> httpRequest,
+                                               AuthenticationRequest<String, String> authenticationRequest) {
+        String email = authenticationRequest.getIdentity();
+        String password = authenticationRequest.getSecret();
         
         User user = userRepository.findByEmail(email);
         
