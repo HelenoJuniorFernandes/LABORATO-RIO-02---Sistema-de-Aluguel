@@ -2,7 +2,7 @@ micronaut:
   application:
     name: rental-system
   server:
-    port: ${PORT:8080}
+    port: 8080
     
   # Configurações do Micronaut Security
   security:

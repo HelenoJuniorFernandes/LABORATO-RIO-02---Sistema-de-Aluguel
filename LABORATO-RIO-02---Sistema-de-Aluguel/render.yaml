@@ -4,6 +4,3 @@ services:
     runtime: docker
     branch: main
     rootDir: rental-system
-    envVars:
-      - key: PORT
-        value: 10000
