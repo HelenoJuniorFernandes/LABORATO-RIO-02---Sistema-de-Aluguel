@@ -5,6 +5,7 @@ import com.pucminas.rental_system.repository.*;
 import com.pucminas.rental_system.service.PedidoAluguelService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.security.annotation.Secured;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
 import java.security.Principal;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Secured("ROLE_CLIENTE")
 @Controller("/cliente")
 public class ClienteController {
 

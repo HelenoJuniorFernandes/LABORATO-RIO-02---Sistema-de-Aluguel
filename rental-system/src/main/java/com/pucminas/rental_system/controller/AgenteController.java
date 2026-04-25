@@ -10,6 +10,7 @@ import com.pucminas.rental_system.service.PedidoAluguelService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
+import io.micronaut.security.annotation.Secured;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
 import java.security.Principal;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Secured("ROLE_AGENTE")
 @Controller("/agente")
 public class AgenteController {
 

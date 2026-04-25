@@ -5,12 +5,14 @@ import com.pucminas.rental_system.repository.AutomovelRepository;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
 
 import java.net.URI;
 import java.util.Map;
 
+@Secured("ROLE_AGENTE")
 @Controller("/automoveis")
 public class AutomovelController {
 

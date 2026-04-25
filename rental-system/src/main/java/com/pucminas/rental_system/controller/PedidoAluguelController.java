@@ -7,6 +7,8 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.views.View;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import jakarta.inject.Inject;
 
 import java.net.URI;
@@ -14,6 +16,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/pedidos")
 public class PedidoAluguelController {
 

@@ -22,27 +22,12 @@ micronaut:
         get-allowed: true
     # Regras de proteção de rotas (substitui o antigo SecurityConfig do Spring)
     intercept-url-map:
-      - pattern: /login
-        access:
-          - isAnonymous()
-      - pattern: /
-        access:
-          - isAnonymous()
       - pattern: /css/**
         access:
           - isAnonymous()
       - pattern: /img/**
         access:
           - isAnonymous()
-      - pattern: /agente/**
-        access:
-          - ROLE_AGENTE
-      - pattern: /cliente/**
-        access:
-          - ROLE_CLIENTE
-      - pattern: /**
-        access:
-          - isAuthenticated()
 
 # Configurações do Banco de Dados H2
 datasources:
