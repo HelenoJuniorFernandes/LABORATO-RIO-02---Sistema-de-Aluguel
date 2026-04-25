@@ -3,6 +3,7 @@ services:
     name: rental-system
     runtime: java
     branch: main
+    rootDir: rental-system
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/rental-system-0.0.1-SNAPSHOT.jar
     envVars:
