@@ -1,9 +1,9 @@
 package com.pucminas.rental_system;
 
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = RentalSystemApplication.class)
+@MicronautTest
 class RentalSystemApplicationTests {
 
 	@Test
