@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>Detalhes do Cliente - VeloRent</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Menu Lateral -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>VeloRent</h2>
+          <p>Agente: <span sec:authentication="name"></span></p>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="menu-item">
+            <a th:href="@{/agente/dashboard}" class="menu-link">
+              <span class="menu-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/dados}" class="menu-link">
+              <span class="menu-icon">👤</span>
+              Meus Dados
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/pending}" class="menu-link">
+              <span class="menu-icon">⏳</span>
+              Pedidos Pendentes de Avaliação
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/todos-pedidos}" class="menu-link">
+              <span class="menu-icon">📋</span>
+              Todos os Pedidos
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/agente/automoveis}" class="menu-link">
+              <span class="menu-icon">🚗</span>
+              Automóveis Cadastrados
+            </a>
+          </li>
+          <li class="menu-item logout">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+              <button type="submit" class="menu-link logout-btn">
+                <span class="menu-icon">🚪</span>
+                Sair
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Detalhes do Cliente</h1>
+          <p>Informações completas do cliente</p>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Dados de Identificação</h2>
+          <div class="detail-group">
+            <p>
+              <strong>Nome:</strong> <span th:text="${cliente.nome}"></span>
+            </p>
+            <p><strong>RG:</strong> <span th:text="${cliente.rg}"></span></p>
+            <p><strong>CPF:</strong> <span th:text="${cliente.cpf}"></span></p>
+            <p>
+              <strong>Endereço:</strong>
+              <span th:text="${cliente.endereco}"></span>
+            </p>
+            <p>
+              <strong>Profissão:</strong>
+              <span th:text="${cliente.profissao}"></span>
+            </p>
+          </div>
+
+          <h2 class="card-title mt-4">Gastos Atuais em Aluguéis</h2>
+          <div class="detail-group">
+            <p>
+              <strong>Total Gasto Atualmente:</strong>
+              <span th:text="${#numbers.formatCurrency(totalGastoAtualmente)}"
+                >R$ 0,00</span
+              >
+            </p>
+          </div>
+
+          <h2 class="card-title mt-4">Carros Atualmente Alugados</h2>
+          <div th:if="${pedidosAtivos.empty}" class="alert alert-info">
+            Nenhum carro alugado no momento por este cliente.
+          </div>
+          <div th:unless="${pedidosAtivos.empty}" class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Placa</th>
+                  <th>Valor Diário</th>
+                  <th>Data Retirada</th>
+                  <th>Data Devolução</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="pedido : ${pedidosAtivos}">
+                  <td th:text="${pedido.automovel.marca}"></td>
+                  <td th:text="${pedido.automovel.modelo}"></td>
+                  <td th:text="${pedido.automovel.placa}"></td>
+                  <td
+                    th:text="${#numbers.formatCurrency(pedido.automovel.valorAluguelDiario)}"
+                  ></td>
+                  <td
+                    th:text="${#temporals.format(pedido.dataRetirada, 'dd/MM/yyyy HH:mm')}"
+                  ></td>
+                  <td
+                    th:text="${#temporals.format(pedido.dataDevolucao, 'dd/MM/yyyy HH:mm')}"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="action-buttons mt-4">
+            <a th:href="@{/agente/todos-pedidos}" class="btn btn-secondary">
+              <span class="btn-icon">📋</span>
+              Voltar para Todos os Pedidos
+            </a>
+            <a th:href="@{/pedidos/pending}" class="btn btn-secondary">
+              <span class="btn-icon">⏳</span>
+              Voltar para Pedidos Pendentes
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

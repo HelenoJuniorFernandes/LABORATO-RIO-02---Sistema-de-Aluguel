@@ -1,0 +1,53 @@
+micronaut:
+  application:
+    name: rental-system
+  server:
+    port: ${PORT:8080}
+    
+  # Configurações do Micronaut Security
+  security:
+    authentication: session
+    endpoints:
+      login:
+        enabled: true
+      logout:
+        enabled: true
+        get-allowed: true
+    # Regras de proteção de rotas (substitui o antigo SecurityConfig do Spring)
+    intercept-url-map:
+      - pattern: /login
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /css/**
+        access:
+          - isAnonymous()
+      - pattern: /images/**
+        access:
+          - isAnonymous()
+      - pattern: /agente/**
+        access:
+          - ROLE_AGENTE
+      - pattern: /cliente/**
+        access:
+          - ROLE_CLIENTE
+      - pattern: /**
+        access:
+          - isAuthenticated()
+
+# Configurações do Banco de Dados H2
+datasources:
+  default:
+    url: jdbc:h2:mem:rentalsystemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    dialect: H2
+
+# Configurações do Hibernate / JPA
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Novo Pedido - VeloRent</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Menu Lateral -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>VeloRent</h2>
+          <p>Bem-vindo, <span sec:authentication="name"></span></p>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="menu-item">
+            <a th:href="@{/cliente/dashboard}" class="menu-link">
+              <span class="menu-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/cliente/dados}" class="menu-link">
+              <span class="menu-icon">👤</span>
+              Meus Dados
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/cliente/automoveis}" class="menu-link">
+              <span class="menu-icon">🚗</span>
+              Automóveis Disponíveis
+            </a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/pedidos/mine}" class="menu-link">
+              <span class="menu-icon">📋</span>
+              Meus Pedidos
+            </a>
+          </li>
+          <li class="menu-item active">
+            <a href="#" class="menu-link">
+              <span class="menu-icon">➕</span>
+              Criar Pedido de Aluguel
+            </a>
+          </li>
+          <li class="menu-item logout">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+              <button type="submit" class="menu-link logout-btn">
+                <span class="menu-icon">🚪</span>
+                Sair
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Criar Novo Pedido de Aluguel</h1>
+          <p>Selecione um veículo disponível para alugar</p>
+        </div>
+
+        <div class="card">
+          <form th:action="@{/pedidos/new}" method="post" class="pedido-form">
+            <div class="form-group">
+              <label for="automovel">Selecione um Carro</label>
+              <select
+                id="automovel"
+                name="automovelId"
+                class="form-control"
+                required
+              >
+                <option value="" disabled selected>
+                  Escolha um veículo...
+                </option>
+                <option
+                  th:each="auto : ${automoveis}"
+                  th:value="${auto.id}"
+                  th:text="${auto.marca} + ' ' + ${auto.modelo} + ' - ' + ${auto.placa}"
+                ></option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dataRetirada">Data e Hora de Retirada</label>
+              <input
+                type="datetime-local"
+                id="dataRetirada"
+                name="dataRetirada"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="dataDevolucao">Data e Hora de Devolução</label>
+              <input
+                type="datetime-local"
+                id="dataDevolucao"
+                name="dataDevolucao"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-success"
+                style="width: 100%; font-size: 1.1rem; padding: 15px"
+              >
+                <span class="btn-icon">✨</span>
+                Enviar Pedido de Aluguel
+              </button>
+            </div>
+          </form>
+
+          <div class="action-buttons">
+            <a th:href="@{/pedidos/mine}" class="btn btn-secondary">
+              <span class="btn-icon">📋</span>
+              Ver Meus Pedidos
+            </a>
+            <a th:href="@{/cliente/dashboard}" class="btn btn-secondary">
+              <span class="btn-icon">📊</span>
+              Voltar ao Dashboard
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
