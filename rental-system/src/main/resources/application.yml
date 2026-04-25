@@ -8,6 +8,7 @@ micronaut:
   security:
     authentication: session
     redirect:
+      enabled: true
       unauthorized:
         url: /login
       login-success: /
@@ -22,13 +23,15 @@ micronaut:
     # Regras de proteção de rotas (substitui o antigo SecurityConfig do Spring)
     intercept-url-map:
       - pattern: /login
-        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /
         access:
           - isAnonymous()
       - pattern: /css/**
         access:
           - isAnonymous()
-      - pattern: /images/**
+      - pattern: /img/**
         access:
           - isAnonymous()
       - pattern: /agente/**
