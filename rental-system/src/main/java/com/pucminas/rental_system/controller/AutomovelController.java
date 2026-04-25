@@ -2,55 +2,54 @@ package com.pucminas.rental_system.controller;
 
 import com.pucminas.rental_system.model.Automovel;
 import com.pucminas.rental_system.repository.AutomovelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.*;
+import io.micronaut.views.View;
+import jakarta.inject.Inject;
 
-@Controller
-@RequestMapping("/automoveis")
+import java.net.URI;
+import java.util.Map;
+
+@Controller("/automoveis")
 public class AutomovelController {
 
-    @Autowired
+    @Inject
     private AutomovelRepository automovelRepository;
 
-    @GetMapping("/novo")
-    public String showNovoForm(Model model) {
-        model.addAttribute("automovel", new Automovel());
-        return "automovel-form";
+    @View("automovel-form")
+    @Get("/novo")
+    public Map<String, Object> showNovoForm() {
+        return Map.of("automovel", new Automovel());
     }
 
-    @PostMapping("/novo")
-    public String criarAutomovel(@ModelAttribute Automovel automovel, 
-                                RedirectAttributes redirectAttributes) {
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Post("/novo")
+    public HttpResponse<?> criarAutomovel(@Body Automovel automovel) {
         try {
             automovelRepository.save(automovel);
-            redirectAttributes.addFlashAttribute("successMessage", "Veículo cadastrado com sucesso!");
-            return "redirect:/agente/automoveis";
+            return HttpResponse.seeOther(URI.create("/agente/automoveis"));
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar veículo: " + e.getMessage());
-            return "redirect:/automoveis/novo";
+            return HttpResponse.seeOther(URI.create("/automoveis/novo"));
         }
     }
 
-    @GetMapping("/editar/{id}")
-    public String showEditarForm(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+    @View("automovel-edit-form")
+    @Get("/editar/{id}")
+    public HttpResponse<?> showEditarForm(@PathVariable Long id) {
         try {
             Automovel automovel = automovelRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
-            model.addAttribute("automovel", automovel);
-            return "automovel-edit-form";
+            return HttpResponse.ok(Map.of("automovel", automovel));
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao carregar veículo: " + e.getMessage());
-            return "redirect:/agente/automoveis";
+            return HttpResponse.seeOther(URI.create("/agente/automoveis"));
         }
     }
 
-    @PostMapping("/editar/{id}")
-    public String editarAutomovel(@PathVariable Long id, 
-                                 @ModelAttribute Automovel automovelAtualizado,
-                                 RedirectAttributes redirectAttributes) {
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Post("/editar/{id}")
+    public HttpResponse<?> editarAutomovel(@PathVariable Long id, 
+                                           @Body Automovel automovelAtualizado) {
         try {
             Automovel automovel = automovelRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
@@ -65,11 +64,9 @@ public class AutomovelController {
             automovel.setImagemUrl(automovelAtualizado.getImagemUrl());
             
             automovelRepository.save(automovel);
-            redirectAttributes.addFlashAttribute("successMessage", "Veículo atualizado com sucesso!");
-            return "redirect:/agente/automoveis";
+            return HttpResponse.seeOther(URI.create("/agente/automoveis"));
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao atualizar veículo: " + e.getMessage());
-            return "redirect:/automoveis/editar/" + id;
+            return HttpResponse.seeOther(URI.create("/automoveis/editar/" + id));
         }
     }
 
