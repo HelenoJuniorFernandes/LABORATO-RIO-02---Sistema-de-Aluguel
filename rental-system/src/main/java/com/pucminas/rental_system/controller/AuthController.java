@@ -13,7 +13,7 @@ import java.net.URI;
 import java.security.Principal;
 import java.util.Map;
 
-@Secured(SecurityRule.IS_ANONYMOUS)
+@Secured({SecurityRule.IS_ANONYMOUS, SecurityRule.IS_AUTHENTICATED})
 @Controller
 public class AuthController {
     

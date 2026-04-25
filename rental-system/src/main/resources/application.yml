@@ -4,6 +4,15 @@ micronaut:
   server:
     port: 8080
     
+  router:
+    static-resources:
+      css:
+        paths: "classpath:static/css"
+        mapping: "/css/**"
+      img:
+        paths: "classpath:static/img"
+        mapping: "/img/**"
+
   # Configurações do Micronaut Security
   security:
     authentication: session
