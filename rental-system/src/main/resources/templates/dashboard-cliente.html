@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html
   xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
   <head>
     <title>Dashboard - VeloRent</title>
@@ -15,7 +14,7 @@
       <nav class="sidebar">
         <div class="sidebar-header">
           <h2>VeloRent</h2>
-          <p>Bem-vindo, <span sec:authentication="name"></span></p>
+          <p>Bem-vindo, <span th:text="${security != null ? security.name : 'Usuário'}"></span></p>
         </div>
 
         <ul class="sidebar-menu">

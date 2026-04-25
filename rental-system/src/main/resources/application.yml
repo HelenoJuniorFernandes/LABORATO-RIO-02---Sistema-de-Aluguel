@@ -7,6 +7,12 @@ micronaut:
   # Configurações do Micronaut Security
   security:
     authentication: session
+    redirect:
+      unauthorized:
+        url: /login
+      login-success: /
+      login-failure: /login?error=true
+      logout: /login?logout=true
     endpoints:
       login:
         enabled: true
