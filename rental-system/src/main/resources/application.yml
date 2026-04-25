@@ -23,16 +23,20 @@ micronaut:
     # Regras de proteção de rotas (substitui o antigo SecurityConfig do Spring)
     intercept-url-map:
       - pattern: /css/**
+        http-method: GET
         access:
           - isAnonymous()
+          - isAuthenticated()
       - pattern: /img/**
+        http-method: GET
         access:
           - isAnonymous()
+          - isAuthenticated()
 
 # Configurações do Banco de Dados H2
 datasources:
   default:
-    url: jdbc:h2:mem:rentalsystemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    jdbc-url: "jdbc:h2:mem:rentalsystemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
     driverClassName: org.h2.Driver
     username: sa
     password: password
@@ -44,4 +48,5 @@ jpa:
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create
+          import_files: data.sql
