@@ -6,12 +6,18 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.security.annotation.Secured;
+import io.micronaut.views.ModelAndView;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
+import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.scheduling.TaskExecutors;
+import jakarta.transaction.Transactional;
 
 import java.net.URI;
 import java.util.Map;
 
+@Transactional
+@ExecuteOn(TaskExecutors.IO)
 @Secured("ROLE_AGENTE")
 @Controller("/automoveis")
 public class AutomovelController {
@@ -36,13 +42,12 @@ public class AutomovelController {
         }
     }
 
-    @View("automovel-edit-form")
     @Get("/editar/{id}")
     public HttpResponse<?> showEditarForm(@PathVariable Long id) {
         try {
             Automovel automovel = automovelRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
-            return HttpResponse.ok(Map.of("automovel", automovel));
+            return HttpResponse.ok(new ModelAndView<>("automovel-edit-form", Map.of("automovel", automovel)));
         } catch (Exception e) {
             return HttpResponse.seeOther(URI.create("/agente/automoveis"));
         }

@@ -22,6 +22,22 @@ for /f "tokens=3" %%g in ('java -version 2^>^&1 ^| findstr /i "version"') do (
 echo Java encontrado: %JAVA_VERSION%
 echo.
 
+REM ============================================================================
+REM    INICIO DA SINCRONIZACAO DE ARQUIVOS VISUAIS
+REM ============================================================================
+echo Sincronizando as alteracoes visuais (HTML)...
+xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\src\main\resources\templates\*.html" "%~dp0rental-system\src\main\resources\templates\" /Y /I
+echo.
+
+echo Sincronizando imagens dos carros...
+xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\src\main\resources\static\img" "%~dp0rental-system\src\main\resources\static\img\" /Y /I /E
+echo.
+
+echo ============================================================================
+echo    SINCRONIZACAO CONCLUIDA
+echo ============================================================================
+echo.
+
 REM Navegar para o diretório do projeto
 cd /d "%~dp0rental-system"
 
@@ -35,7 +51,7 @@ if not exist "mvnw.cmd" (
 
 echo Iniciando aplicacao Micronaut...
 echo.
-echo A aplicacao estara disponivel em: http://localhost:8080
+echo A aplicacao estara disponivel em: http://localhost:8082 (ou a porta que voce configurou)
 echo.
 echo Pressione Ctrl+C para parar a aplicacao
 echo.

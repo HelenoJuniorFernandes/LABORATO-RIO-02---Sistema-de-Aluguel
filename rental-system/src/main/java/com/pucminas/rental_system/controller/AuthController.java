@@ -6,18 +6,21 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
+import io.micronaut.views.ModelAndView;
 import io.micronaut.views.View;
 import io.micronaut.core.annotation.Nullable;
+import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.scheduling.TaskExecutors;
 
 import java.net.URI;
 import java.security.Principal;
 import java.util.Map;
 
+@ExecuteOn(TaskExecutors.IO)
 @Secured({SecurityRule.IS_ANONYMOUS, SecurityRule.IS_AUTHENTICATED})
 @Controller
 public class AuthController {
     
-    @View("login")
     @Get("/login")
     public HttpResponse<?> login(@Nullable Principal principal, 
                                  @Nullable @QueryValue Boolean error, 
@@ -25,10 +28,12 @@ public class AuthController {
         if (principal != null) {
             return HttpResponse.redirect(URI.create("/pedidos"));
         }
-        return HttpResponse.ok(Map.of(
-            "error", error != null && error,
-            "logout", logout != null && logout
-        ));
+        return HttpResponse.ok(new ModelAndView<>("login", Map.of(
+            "param", Map.of(
+                "error", error != null && error,
+                "logout", logout != null && logout
+            )
+        )));
     }
 
     @Get("/")

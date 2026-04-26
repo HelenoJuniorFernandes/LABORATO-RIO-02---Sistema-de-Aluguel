@@ -12,7 +12,12 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.scheduling.TaskExecutors;
+import jakarta.transaction.Transactional;
 
+@Transactional
+@ExecuteOn(TaskExecutors.IO)
 @Secured("ROLE_CLIENTE")
 @Controller("/cliente")
 public class ClienteController {

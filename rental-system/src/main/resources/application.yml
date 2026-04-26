@@ -2,20 +2,27 @@ micronaut:
   application:
     name: rental-system
   server:
-    port: 8080
+    port: ${PORT:8082}
+
+  views:
+    thymeleaf:
+      cache: false
     
   router:
     static-resources:
-      css:
-        paths: "classpath:static/css"
-        mapping: "/css/**"
-      img:
-        paths: "classpath:static/img"
-        mapping: "/img/**"
+      default:
+        paths: ["classpath:static"]
+        mapping: "/**"
 
   # Configurações do Micronaut Security
   security:
-    authentication: session
+    authentication: cookie
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: "chaveSecretaMuitoForteParaOJWTDeAluguel123456"
     redirect:
       enabled: true
       unauthorized:
@@ -45,7 +52,7 @@ micronaut:
 # Configurações do Banco de Dados H2
 datasources:
   default:
-    jdbc-url: "jdbc:h2:mem:rentalsystemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    jdbc-url: "jdbc:h2:mem:rentalsystemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=USER,PASSWORD"
     driverClassName: org.h2.Driver
     username: sa
     password: password
@@ -54,8 +61,10 @@ datasources:
 # Configurações do Hibernate / JPA
 jpa:
   default:
+    packages-to-scan:
+      - 'com.pucminas.rental_system.model'
     properties:
       hibernate:
         hbm2ddl:
           auto: create
-          import_files: data.sql
+      jakarta.persistence.sql-load-script-source: "data.sql"
