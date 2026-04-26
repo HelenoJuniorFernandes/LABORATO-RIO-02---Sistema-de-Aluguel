@@ -4,7 +4,7 @@ services:
     env: java
     plan: free
     rootDir: rental-system
-    buildCommmand: "./mvnw package -Dpackaging=jar"
+    buildCommand: "java -jar .mvn/wrapper/maven-wrapper.jar package -Dpackaging=jar"
     startCommand: "java -jar target/rental-system-0.0.1-SNAPSHOT.jar"
     envVars:
       - key: JAVA_VERSION
