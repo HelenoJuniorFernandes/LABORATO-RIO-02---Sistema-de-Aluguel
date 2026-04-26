@@ -1,11 +1,11 @@
 services:
   - type: web
     name: rental-system
-    env: java
+    env: java # Especifica que é um ambiente Java
     plan: free
-    rootDir: rental-system
-    buildCommand: "java -jar .mvn/wrapper/maven-wrapper.jar package -Dpackaging=jar"
-    startCommand: "java -jar target/rental-system-0.0.1-SNAPSHOT.jar"
+    rootDir: rental-system # Diz ao Render para entrar nesta pasta antes de tudo
+    buildCommand: "java -jar .mvn/wrapper/maven-wrapper.jar package -Dpackaging=jar" # Comando para CONSTRUIR o projeto
+    startCommand: "java -jar target/rental-system-0.0.1-SNAPSHOT.jar" # Comando para INICIAR o servidor
     envVars:
       - key: JAVA_VERSION
         value: 17
