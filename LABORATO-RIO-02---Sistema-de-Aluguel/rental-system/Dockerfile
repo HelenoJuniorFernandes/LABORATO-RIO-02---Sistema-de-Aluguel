@@ -1,21 +1,25 @@
 # Estágio 1: Build com Maven e Java 17 (Builder)
-# Usamos uma imagem completa do Maven para compilar o projeto.
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+FROM eclipse-temurin:17-jdk-jammy AS builder
 
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Otimização: Copia o pom.xml e baixa as dependências primeiro.
-# Isso aproveita o cache do Docker. As dependências só serão baixadas novamente
-# se o pom.xml for alterado.
-COPY pom.xml .
-RUN mvn dependency:go-offline
+# Otimização: Copia os arquivos de build e baixa as dependências.
+# O contexto do Docker é a raiz do repositório, então precisamos especificar a subpasta 'rental-system'.
+COPY rental-system/.mvn/ .mvn/
+COPY rental-system/mvnw rental-system/pom.xml ./
+
+# Dá permissão de execução ao wrapper
+RUN chmod +x mvnw
+
+# Baixa as dependências para aproveitar o cache
+RUN ./mvnw dependency:go-offline
 
 # Agora copia o resto do código fonte
-COPY src ./src
+COPY rental-system/src ./src
 
 # Executa o comando do Maven para empacotar a aplicação, pulando os testes.
-RUN mvn package -DskipTests
+RUN ./mvnw package -DskipTests
 
 # Estágio 2: Imagem final, leve e otimizada para produção
 FROM eclipse-temurin:17-jre-jammy
