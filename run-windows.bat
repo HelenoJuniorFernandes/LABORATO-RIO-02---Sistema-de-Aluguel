@@ -38,7 +38,7 @@ xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\render.yaml" "%~dp0" /Y /I
 echo.
 
 echo Sincronizando arquivo do Docker...
-xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\Dockerfile" "%~dp0rental-system\" /Y /I
+xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\Dockerfile" "%~dp0\" /Y /I
 echo.
 
 echo ============================================================================
