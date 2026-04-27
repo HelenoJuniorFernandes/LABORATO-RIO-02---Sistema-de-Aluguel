@@ -37,6 +37,10 @@ echo Sincronizando arquivo de deploy (render.yaml)...
 xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\render.yaml" "%~dp0" /Y /I
 echo.
 
+echo Sincronizando arquivo do Docker...
+xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\Dockerfile" "%~dp0rental-system\" /Y /I
+echo.
+
 echo ============================================================================
 echo    SINCRONIZACAO CONCLUIDA
 echo ============================================================================
