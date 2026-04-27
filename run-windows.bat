@@ -41,6 +41,9 @@ echo ===========================================================================
 echo    SINCRONIZACAO CONCLUIDA
 echo ============================================================================
 echo.
+echo Pressione qualquer tecla para iniciar o servidor local...
+pause >nul
+echo.
 
 REM Navegar para o diretório do projeto
 cd /d "%~dp0rental-system"
