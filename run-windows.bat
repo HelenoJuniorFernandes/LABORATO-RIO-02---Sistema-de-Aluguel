@@ -33,6 +33,10 @@ echo Sincronizando imagens dos carros...
 xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\rental-system\src\main\resources\static\img" "%~dp0rental-system\src\main\resources\static\img\" /Y /I /E
 echo.
 
+echo Sincronizando arquivo de deploy (render.yaml)...
+xcopy "%~dp0LABORATO-RIO-02---Sistema-de-Aluguel\render.yaml" "%~dp0" /Y /I
+echo.
+
 echo ============================================================================
 echo    SINCRONIZACAO CONCLUIDA
 echo ============================================================================
